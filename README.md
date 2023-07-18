@@ -24,8 +24,23 @@ This project includes two separate DAGs (dag1.py and dag2.py) designed to pull d
 In dag1.py, we connect to an API, retrieve JSON data for several seasons, and store the JSON data in a GCP bucket. This DAG includes a PythonOperator that runs the save_json_clubs_average_season function, which handles all data retrieval and storage. In dag2.py, we download the stored JSON data from the GCP bucket, process it into a Pandas DataFrame, and append it to a MySQL database. The processing and storage is handled by the save_sql_clubs_average_season function. In both DAGs, we have email alerts set up for successes and failures of the DAG runs.
 </p>
 
+## Getting Started
+<p align="justify"> Install the required Python packages: requests, json, datetime, google.cloud.storage, sqlalchemy, pandas, and airflow. You need to have access to a MySQL server. You need a Google Cloud Storage bucket to store JSON files. Make sure you have the necessary API access and keys. Make sure you replace all placeholder values in the scripts (//CREDENTIALS//PATH//file.json, USER:PASSWORD@localhost:PORT/DATABASE, etc.).
+</p>
+
+## Executing Program
+<p align="justify"> Set up the dag1.py and dag2.py files in your Airflow DAGs folder. Turn on the DAGs in your Airflow UI.
+</p>
+
 ## Author
-<p align="justify"> Gustavo de Souza Pessanha da Costa. </p>
+<p align="justify"> Gustavo de Souza Pessanha da Costa. 
+</p>
+
+## License
+<p align="justify"> This project is licensed under the MIT license. 
+</p>
+
+:small_orange_diamond: :small_orange_diamond: :small_orange_diamond:
 
 ## Descrição do Projeto
 <p align="justify"> Este projeto inclui duas DAGs separadas (dag1.py e dag2.py) projetadas para extrair dados de uma API, armazenar os dados no Google Cloud Storage e, finalmente, processar e anexar os dados a um banco de dados MySQL usando a biblioteca Python Pandas.
