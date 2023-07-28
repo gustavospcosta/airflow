@@ -29,6 +29,15 @@ seasons_list = ["40557","27591","22931","16183"]
 
 # FUNCTION SUCCESS MAIL
 def success_email(context):
+    """
+    Sends an email when a Directed Acyclic Graph (DAG) has run successfully.
+
+    Args:
+        context (dict): A dictionary with metadata about the DAG run, including the 'dag_run' key.
+
+    Returns:
+        None. Sends an email to a predetermined email address upon successful DAG execution.
+    """
     dag_run = context.get('dag_run')
     msg = f"DAG {dag_run} RAN successfully"
     subject = f"DAG RAN successfully"
@@ -36,6 +45,15 @@ def success_email(context):
 
 # FUNCTION FAIL MAIL
 def fail_email(context):
+    """
+    Sends an email when a Directed Acyclic Graph (DAG) has not run successfully.
+
+    Args:
+        context (dict): A dictionary with metadata about the DAG run, including the 'dag_run' key.
+
+    Returns:
+        None. Sends an email to a predetermined email address upon unsuccessful DAG execution.
+    """
     dag_run = context.get('dag_run')
     msg = f"DAG {dag_run} NOT RAN successfully"
     subject = f"DAG NOT RAN successfully"
@@ -43,6 +61,16 @@ def fail_email(context):
 
 # FUNCTION
 def save_json_clubs_average_season():
+    """
+    For each season in the seasons list, fetches top teams data from an API, 
+    saves the data to a JSON format, and uploads it to a Google Cloud Platform bucket.
+
+    Args:
+        None
+
+    Returns:
+        None. Fetches data and writes it to a JSON file in a GCP bucket for each season in the seasons list.
+    """
 
     for season in seasons_list:
         file_name = f"filename_{season}"
