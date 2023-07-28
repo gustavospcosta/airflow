@@ -33,6 +33,15 @@ seasons_list = ["40557","27591","22931","16183"]
 
 # FUNCTION SUCCESS MAIL
 def success_email(context):
+    """
+    Sends an email when a Directed Acyclic Graph (DAG) has run successfully.
+
+    Args:
+        context (dict): A dictionary with metadata about the DAG run, including the 'dag_run' key.
+
+    Returns:
+        None. Sends an email to a predetermined email address upon successful DAG execution.
+    """
     dag_run = context.get('dag_run')
     msg = f"DAG {dag_run} RAN successfully"
     subject = f"DAG RAN successfully"
@@ -40,6 +49,15 @@ def success_email(context):
 
 # FUNCTION FAIL MAIL
 def fail_email(context):
+    """
+    Sends an email when a Directed Acyclic Graph (DAG) has not run successfully.
+
+    Args:
+        context (dict): A dictionary with metadata about the DAG run, including the 'dag_run' key.
+
+    Returns:
+        None. Sends an email to a predetermined email address upon unsuccessful DAG execution.
+    """
     dag_run = context.get('dag_run')
     msg = f"DAG {dag_run} NOT RAN successfully"
     subject = f"DAG NOT RAN successfully"
@@ -47,6 +65,17 @@ def fail_email(context):
 
 # FUNCTION
 def save_sql_clubs_average_season():
+    """
+    Downloads the JSON data of club averages for different seasons from a Google Cloud Platform (GCP) bucket, 
+    processes this data into a pandas DataFrame, and then uploads this DataFrame to a SQL database.
+
+    Args:
+        None
+
+    Returns:
+        None. Downloads the JSON data, processes it, and writes the final DataFrame to a SQL table named 'c_average_season'. 
+        The SQL table columns are: team_name, team_id, average_rating, matches, season_id, and last_update.
+    """
 
     df_final = pd.DataFrame()
 
